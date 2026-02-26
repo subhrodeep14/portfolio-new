@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #080b10;
+  --bg2: #0d1117;
+  --bg3: #111620;
+  --accent: #00f0a0;
+  --accent2: #0099ff;
+  --accent3: #7b61ff;
+  --text: #e8edf5;
+  --muted: #6b7a99;
+  --border: rgba(255, 255, 255, 0.07);
+  --card: rgba(255, 255, 255, 0.03);
+  --font-head: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(0, 240, 160, 0.3); border-radius: 2px; }
+
+/* Selection */
+::selection { background: rgba(0, 240, 160, 0.2); color: var(--accent); }
+
+/* Cursor */
+.cursor-dot {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(0, 240, 160, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: border-color 0.3s;
+}
+
+.cursor-dot.hover { transform: translate(-50%, -50%) scale(2.5); }
+.cursor-ring.hover { border-color: rgba(0, 240, 160, 0.7); }
+
+/* Touch devices */
+@media (hover: none) {
+  body { cursor: auto; }
+  .cursor-dot, .cursor-ring { display: none; }
+}
+
+/* ── Navbar responsive ── */
+.desktop-nav { display: flex; }
+.hamburger-btn { display: none; }
+
+@media (max-width: 768px) {
+  .desktop-nav { display: none !important; }
+  .hamburger-btn { display: flex !important; }
+  #navbar { padding: 16px 20px !important; }
+}
+
+/* ── Hero responsive ── */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr !important; }
+  .hero-visual { display: none !important; }
+  #hero { padding: 100px 30px 80px !important; }
+}
+@media (max-width: 600px) {
+  #hero { padding: 100px 20px 60px !important; }
+}
+
+/* ── Services responsive ── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 600px) {
+  .services-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── Skills responsive ── */
+@media (max-width: 768px) {
+  .skills-layout { grid-template-columns: 1fr !important; }
+}
+
+/* ── Work responsive ── */
+@media (max-width: 768px) {
+  .work-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ── About responsive ── */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    padding: 60px 20px !important;
+  }
+}
+
+/* ── General section padding on mobile ── */
+@media (max-width: 768px) {
+  .section-pad { padding: 60px 20px !important; }
+}
+
+/* ── Footer responsive ── */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 0.82rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .site-footer {
+    padding: 24px 20px;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+/* ── Contact card responsive ── */
+.contact-card {
+  padding: 70px 60px;
+}
+@media (max-width: 600px) {
+  .contact-card { padding: 44px 24px !important; }
+}
+
+/* Marquee */
+.marquee-wrapper {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 18px 0;
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Animations */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes spin-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.float-animate {
+  animation: float-y 4s ease-in-out infinite;
+}
+
+.pulse-animate {
+  animation: pulse-dot 2s infinite;
+}
+
+/* Mobile hamburger */
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
