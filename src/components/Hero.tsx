@@ -111,7 +111,7 @@ export default function Hero() {
               marginBottom: "20px",
             }}
           >
-            Hello, I'm
+            Hello, I&apos;m
             <br />
             <span
               style={{
@@ -413,7 +413,7 @@ export default function Hero() {
 
             {/* Download CV */}
             <a
-              href={siteConfig.resume}
+              href={"/resume.pdf"}
               download
               style={{
                 display: "inline-flex",
