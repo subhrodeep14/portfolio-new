@@ -420,6 +420,7 @@ export default function Hero() {
                 alignItems: "center",
                 gap: "8px",
                 marginTop: "20px",
+                marginLeft: "4px",
                 color: "var(--muted)",
                 fontSize: "0.8rem",
                 textDecoration: "none",
@@ -441,7 +442,7 @@ export default function Hero() {
             className="float-animate"
             style={{
               position: "absolute",
-              bottom: "30px",
+              bottom: "-20px",
               left: "-30px",
               zIndex: 2,
               background: "rgba(13,17,23,0.9)",
