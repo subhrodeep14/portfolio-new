@@ -165,7 +165,7 @@ export const projects = [
       "Drizzle ORM",
       "REST API",
     ],
-    image: "/project-4.png",
+    image: "/project-hms.png",
     live: "https://hospital-service-management.vercel.app/hms",
     github: "https://github.com/subhrodeep14/Hospital-Mangement-System",
     gradient: "from-[#0d0020] to-[#1a0040]",
